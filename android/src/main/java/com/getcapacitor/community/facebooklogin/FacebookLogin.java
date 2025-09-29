@@ -142,10 +142,10 @@ public class FacebookLogin extends Plugin {
 
         if (nonce.isEmpty()) {
             LoginConfiguration configuration = new LoginConfiguration(permissions);
-            LoginManager.getInstance().logIn(this.getActivity(), configuration);
+            LoginManager.getInstance().logIn(getActivity(), configuration);
         } else {
             LoginConfiguration configuration = new LoginConfiguration(permissions, hashWithSha256(nonce));
-            LoginManager.getInstance().logIn(this.getActivity(), configuration);
+            LoginManager.getInstance().logIn(getActivity(), configuration);
         }
 
         this.latestCallbackId = call.getCallbackId();
@@ -173,7 +173,7 @@ public class FacebookLogin extends Plugin {
             return;
         }
 
-        LoginManager.getInstance().reauthorizeDataAccess(this.getActivity());
+        LoginManager.getInstance().reauthorizeDataAccess(getActivity());
 
         this.latestCallbackId = call.getCallbackId();
         bridge.saveCall(call);
